@@ -18,7 +18,7 @@ type Props = {
  */
 const InstagramTemplate = ({ width, Content }: Props) => {
   return (
-    <div className={`w-[${width}px] border-[1px] border-slate-200 py-3`}>
+    <div className={`border-[1px] border-slate-200 py-3`}>
       <header className="flex items-center justify-between py-2">
         <div className="flex items-center px-2">
           <FaCircle size={width / 15} />

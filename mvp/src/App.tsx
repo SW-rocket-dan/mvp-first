@@ -5,7 +5,8 @@ import GroupSVG from "../src/assets/Group.svg?react";
 import "./App.css";
 import PromptBox from "./components/PromptBox.tsx";
 import InstagramTemplate from "./components/InstagramTemplate";
-import HoverBox from "./components/HoverBox.tsx";
+import Sample1 from "./assets/sample1.png";
+import SlideImg from "./components/SlideImg.tsx";
 
 function App() {
   const handleClick = () => {
@@ -52,11 +53,45 @@ function App() {
         <p className="text-4xl font-bold">쉽고 간단하게, AI로 만들었습니다.</p>
         <p className="text-2xl">카드뉴스를 눌러보세요!</p>
         <div className="flex gap-10 mb-20">
-          <InstagramTemplate width={500} Content={<HoverBox />} />
-          {/* <HoverBox />
-          <HoverBox />
-          <HoverBox />
-          <HoverBox /> */}
+          <InstagramTemplate
+            width={500}
+            Content={
+              <SlideImg
+                width={500}
+                imgUrl={Sample1}
+                text={
+                  "모아서 주는 마음이 더 기억에 남는 법! 다른 사람들과 함께 선물을 준비해보세요"
+                }
+                purpose="선물 펀딩 서비스 페이지 홍보"
+              />
+            }
+          />
+          <InstagramTemplate
+            width={500}
+            Content={
+              <SlideImg
+                width={500}
+                imgUrl={Sample1}
+                text={
+                  "모아서 주는 마음이 더 기억에 남는 법! 다른 사람들과 함께 선물을 준비해보세요"
+                }
+                purpose="선물 펀딩 서비스 페이지 홍보"
+              />
+            }
+          />
+          <InstagramTemplate
+            width={500}
+            Content={
+              <SlideImg
+                width={500}
+                imgUrl={Sample1}
+                text={
+                  "모아서 주는 마음이 더 기억에 남는 법! 다른 사람들과 함께 선물을 준비해보세요"
+                }
+                purpose="선물 펀딩 서비스 페이지 홍보"
+              />
+            }
+          />
         </div>
       </div>
     </div>
