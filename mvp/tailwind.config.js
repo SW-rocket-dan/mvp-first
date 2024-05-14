@@ -10,12 +10,12 @@ export default {
     extend: {
       colors: {
         primary: {
-          background: '#F6F7FA',
-          default: '#555555'
+          background: "#F6F7FA",
+          default: "#555555",
+          instabtn: "#85BDE2",
         },
-      }
+      },
     },
   },
   plugins: [],
-}
-
+};
