@@ -30,6 +30,9 @@ const SlideImg = ({ width, imgUrl, text, purpose }: Props) => {
           <PromptBox width={width} text={text} purpose={purpose} />
         </div>
       </div>
+      <div className="absolute px-2 text-sm text-white bg-black opacity-50 right-2 top-2 rounded-3xl">
+        {isClick ? "2/2" : "1/2"}
+      </div>
     </div>
   );
 };
