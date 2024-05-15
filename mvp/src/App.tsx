@@ -7,6 +7,9 @@ import PromptBox from "./components/PromptBox.tsx";
 
 import InstagramTemplate from "./components/InstagramTemplate";
 import Sample1 from "./assets/sample1.png";
+import Sample2 from "./assets/sample2.png";
+import Sample3 from "./assets/sample3.png";
+import Sample4 from "./assets/sample4.png";
 import SlideImg from "./components/SlideImg.tsx";
 import { useEffect, useState } from "react";
 
@@ -127,7 +130,7 @@ function App() {
           카드뉴스를 눌러보세요!
         </p>
         <div
-          className="flex gap-10 mb-20"
+          className="flex gap-10 mb-10"
           style={{ flexDirection: `${width > limitWidth ? "row" : "column"}` }}
         >
           <InstagramTemplate
@@ -149,10 +152,24 @@ function App() {
             Content={
               <SlideImg
                 width={templateSize}
-                imgUrl={Sample1}
-                text={
-                  "모아서 주는 마음이 더 기억에 남는 법! 다른 사람들과 함께 선물을 준비해보세요"
-                }
+                imgUrl={Sample2}
+                text={"Let's Gift"}
+                purpose="선물 펀딩 서비스 페이지 홍보"
+              />
+            }
+          />
+        </div>
+        <div
+          className="flex gap-10 mb-10"
+          style={{ flexDirection: `${width > limitWidth ? "row" : "column"}` }}
+        >
+          <InstagramTemplate
+            width={templateSize}
+            Content={
+              <SlideImg
+                width={templateSize}
+                imgUrl={Sample3}
+                text={"한번씩은 다 해본 발표 어떻게 준비 하셨나요?"}
                 purpose="선물 펀딩 서비스 페이지 홍보"
               />
             }
@@ -162,10 +179,8 @@ function App() {
             Content={
               <SlideImg
                 width={templateSize}
-                imgUrl={Sample1}
-                text={
-                  "모아서 주는 마음이 더 기억에 남는 법! 다른 사람들과 함께 선물을 준비해보세요"
-                }
+                imgUrl={Sample4}
+                text={"가족과 간단한 챌린지를 통해 소통온도를 올려봐요!"}
                 purpose="선물 펀딩 서비스 페이지 홍보"
               />
             }
