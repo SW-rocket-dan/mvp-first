@@ -8,19 +8,27 @@ import PromptBox from "./components/PromptBox.tsx";
 import InstagramTemplate from "./components/InstagramTemplate";
 import Sample1 from "./assets/sample1.png";
 import SlideImg from "./components/SlideImg.tsx";
-import HoverBox from "./components/HoverBox.tsx";
 import { useEffect, useState } from "react";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
+  const [templateSize, setTemplateSize] = useState(window.innerWidth);
   const limitWidth = 786;
 
   const handleClick = () => {
     window.open("https://forms.gle/1SZsPLbhtRu9mUDX8");
   };
 
+  ``;
+
   useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
+    setTemplateSize(width > limitWidth ? width / 4 : width * 0.8);
+  }, [width]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -75,7 +83,7 @@ function App() {
           <p>선착순 20명을 한정으로 받고 있어요!</p>
         </div>
         <p className="text-sm text-center md:text-2xl">
-          베타테스터 분께는 추후 서비스 오픈 시{width <= limitWidth && <br />}
+          베타테스터 분께는 추후 서비스 오픈 시 {width <= limitWidth && <br />}
           <span className="font-bold">유료</span> 서비스를{" "}
           <span className="font-bold text-green-600">무료</span>로 제공해 드릴
           예정이에요
@@ -89,23 +97,58 @@ function App() {
             도움이 돼요"
           </p>
 
-          <div className="flex flex-col items-center justify-center gap-1 text-sm md:gap-4 md:text-4xl">
-            <p>블로그에 썸네일을 빠르고 편하게 넣고 싶은 분</p>
-            <p>학생회,서포터즈 등 과제로 카드뉴스를 제작해야 하는 분</p>
-            <p>포토샵 등의 디자인 툴이 어려운 분</p>
-            <p>인스타 등 SNS 홍보를 위해 카드뉴스가 필요한 분</p>
+          <div className="flex flex-col items-center justify-center gap-1 text-sm md:gap-4 md:text-4xl ">
+            <p>
+              블로그에 <span className="font-bold text-green-600">썸네일</span>
+              을 빠르고 편하게 넣고 싶은 분
+            </p>
+            <p>
+              학생회,서포터즈 등{" "}
+              <span className="font-bold text-green-600">과제</span>로
+              카드뉴스를 제작해야 하는 분
+            </p>
+            <p>
+              포토샵 등의 디자인 툴이{" "}
+              <span className="font-bold text-green-600">어려운</span> 분
+            </p>
+            <p>
+              인스타 등 SNS{" "}
+              <span className="font-bold text-green-600">홍보</span>를 위해
+              카드뉴스가 필요한 분
+            </p>
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center my-20 gap-14">
-        <p className="text-4xl font-bold">쉽고 간단하게, AI로 만들었습니다.</p>
-        <p className="text-2xl">카드뉴스를 눌러보세요!</p>
-        <div className="flex gap-10 mb-20">
+      <div className="flex flex-col items-center justify-center gap-8 mt-32 md:gap-14">
+        <p className="text-xl font-bold text-center md:text-4xl ">
+          쉽고 간단하게, AI로 만들었습니다.
+        </p>
+        <p className="text-lg md:text-2xl animate-bounce">
+          카드뉴스를 눌러보세요!
+        </p>
+        <div
+          className="flex gap-10 mb-20"
+          style={{ flexDirection: `${width > limitWidth ? "row" : "column"}` }}
+        >
           <InstagramTemplate
-            width={500}
+            width={templateSize}
             Content={
               <SlideImg
-                width={500}
+                width={templateSize}
+                imgUrl={Sample1}
+                text={
+                  "모아서 주는 마음이 더 기억에 남는 법! 다른 사람들과 함께 선물을 준비해보세요"
+                }
+                purpose="선물 펀딩 서비스 페이지 홍보"
+              />
+            }
+          />
+
+          <InstagramTemplate
+            width={templateSize}
+            Content={
+              <SlideImg
+                width={templateSize}
                 imgUrl={Sample1}
                 text={
                   "모아서 주는 마음이 더 기억에 남는 법! 다른 사람들과 함께 선물을 준비해보세요"
@@ -115,23 +158,10 @@ function App() {
             }
           />
           <InstagramTemplate
-            width={500}
+            width={templateSize}
             Content={
               <SlideImg
-                width={500}
-                imgUrl={Sample1}
-                text={
-                  "모아서 주는 마음이 더 기억에 남는 법! 다른 사람들과 함께 선물을 준비해보세요"
-                }
-                purpose="선물 펀딩 서비스 페이지 홍보"
-              />
-            }
-          />
-          <InstagramTemplate
-            width={500}
-            Content={
-              <SlideImg
-                width={500}
+                width={templateSize}
                 imgUrl={Sample1}
                 text={
                   "모아서 주는 마음이 더 기억에 남는 법! 다른 사람들과 함께 선물을 준비해보세요"

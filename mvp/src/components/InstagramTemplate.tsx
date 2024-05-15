@@ -23,12 +23,12 @@ const InstagramTemplate = ({ width, Content }: Props) => {
         <div className="flex items-center px-2">
           <FaCircle size={width / 15} />
           <div className="flex flex-col ml-2">
-            <p className="font-bold ">rocket_dan</p>
-            <p className="text-slate-300">만들다람쥐</p>
+            <p className="text-sm font-bold md:text-base">rocket_dan</p>
+            <p className="text-xs text-slate-300 md:text-base">만들다람쥐</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center h-10 px-4 border-2 rounded-lg border-primary-instabtn text-primary-instabtn">
+          <div className=" flex items-center justify-center p-2 text-[8px] border-2 rounded-lg   border-primary-instabtn text-primary-instabtn">
             FOLLOW
           </div>
           <BsThreeDotsVertical size={width / 20} />
