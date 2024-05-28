@@ -22,11 +22,10 @@
 
     "baseUrl": "src",
     "paths": {
-      "assets/*" : ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"]
     }
   },
-  "include": ["src",
-    "src/custom.d.ts"
-  ],
+  "include": ["src", "src/custom.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

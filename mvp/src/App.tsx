@@ -1,16 +1,16 @@
-import LogoSvg from "../src/assets/logo.svg?react";
-import StarSvg from "../src/assets/star.svg?react";
-import MainPng from "../src/assets/main.png";
-import GroupSVG from "../src/assets/Group.svg?react";
+import LogoSvg from "@assets/logo.svg?react";
+import StarSvg from "@assets/star.svg?react";
+import MainPng from "@assets/main.png";
+import GroupSVG from "@assets/Group.svg?react";
 import "./App.css";
-import PromptBox from "./components/PromptBox.tsx";
+import PromptBox from "@components/PromptBox";
 
-import InstagramTemplate from "./components/InstagramTemplate";
-import Sample1 from "./assets/sample1.png";
-import Sample2 from "./assets/sample2.png";
-import Sample3 from "./assets/sample3.png";
-import Sample4 from "./assets/sample4.png";
-import SlideImg from "./components/SlideImg.tsx";
+import InstagramTemplate from "@components/InstagramTemplate";
+import Sample1 from "@assets/sample1.png";
+import Sample2 from "@assets/sample2.png";
+import Sample3 from "@assets/sample3.png";
+import Sample4 from "@assets/sample4.png";
+import SlideImg from "@components/SlideImg";
 import { useEffect, useState } from "react";
 
 function App() {
