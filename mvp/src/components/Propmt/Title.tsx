@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { FaArrowRotateLeft } from "react-icons/fa6";
 import { IoCheckbox } from "react-icons/io5";
@@ -6,25 +5,26 @@ import { IoCheckbox } from "react-icons/io5";
 //Title.tsx
 
 type Props = {
-  inputAry: string[];
+  inputAry?: string[];
+  isCheck?: boolean;
   setItemState: React.Dispatch<
-    React.SetStateAction<{
-      inputAry: string[];
-    }>
+    React.SetStateAction<
+      { inputAry: string[]; isCheck: boolean } | { color: string }
+    >
   >;
 };
 
-const Title = ({ inputAry, setItemState }: Props) => {
-  const [isCheck, setIsCheck] = useState(false);
-
+const Title = ({ inputAry, isCheck, setItemState }: Props) => {
   const handlePlusBtn = () => {
     setItemState((prev) => {
+      if (!("inputAry" in prev)) return { ...prev }; // 타입가드 사용
       return { ...prev, inputAry: [...prev.inputAry, ""] };
     });
   };
 
   const handleDeleteTitle = (idx: number) => {
     setItemState((prev) => {
+      if (!("inputAry" in prev)) return { ...prev };
       if (prev.inputAry.length === 1) return { ...prev };
       return {
         ...prev,
@@ -34,7 +34,13 @@ const Title = ({ inputAry, setItemState }: Props) => {
   };
 
   const handleCheckBtn = () => {
-    setIsCheck((prev) => !prev);
+    setItemState((prev) => {
+      if (!("isCheck" in prev)) return { ...prev };
+      return {
+        ...prev,
+        isCheck: !prev.isCheck,
+      };
+    });
   };
 
   const handleInputValue = (
@@ -42,6 +48,7 @@ const Title = ({ inputAry, setItemState }: Props) => {
     idx: number
   ) => {
     setItemState((prev) => {
+      if (!("inputAry" in prev)) return { ...prev };
       const nxAry = [...prev.inputAry];
       nxAry[idx] = e.target.value;
       return { ...prev, inputAry: nxAry };
@@ -57,7 +64,7 @@ const Title = ({ inputAry, setItemState }: Props) => {
   return (
     <div className="flex flex-col gap-2">
       {isCheck
-        ? inputAry.map((v) => {
+        ? inputAry?.map((v) => {
             const strs = v.split(" ");
             return (
               <p>
@@ -72,7 +79,7 @@ const Title = ({ inputAry, setItemState }: Props) => {
               </p>
             );
           })
-        : inputAry.map((_, idx) => (
+        : inputAry?.map((_, idx) => (
             <div className="flex items-center justify-between w-full gap-2 p-1 border-2">
               <input
                 key={idx}
