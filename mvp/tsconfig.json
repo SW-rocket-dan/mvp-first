@@ -23,7 +23,8 @@
     "baseUrl": "src",
     "paths": {
       "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"]
     }
   },
   "include": ["src", "src/custom.d.ts"],
