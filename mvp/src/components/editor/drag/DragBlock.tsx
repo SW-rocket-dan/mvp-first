@@ -1,28 +1,27 @@
-import { cloneElement, forwardRef, useEffect, useRef, useState } from "react";
+import { ReactElement, forwardRef, useEffect, useRef, useState } from "react";
 import React from "react";
-import TextBox from "./TextBox";
-
-export const inrange = (v: number, min: number, max: number) => {
-  if (v < min) return min;
-  if (v > max) return max;
-  return v;
-};
 
 type DragBlockType = {
-  children: React.ReactNode;
+  children: ReactElement;
   id: number;
   zIndex: number;
 };
 
-const DragBlock = forwardRef<HTMLDivElement, DragBlockType>(({ children, id, zIndex }, ref) => {
+const DragBlock = forwardRef<HTMLDivElement, DragBlockType>(({ children, zIndex }, ref) => {
   // const boundaryRef = ref as React.MutableRefObject<HTMLDivElement>;
   const boxRef = useRef<HTMLTextAreaElement>(null);
+  const [{ x, y }, setPosition] = useState({ x: 300, y: 0 });
 
-  const [{ x, y }, setPosition] = useState({ x: 0, y: 0 });
+  useEffect(() => {
+    if (boxRef.current) {
+      const boxSize = Math.floor(boxRef.current.getBoundingClientRect().width / 2);
+      setPosition({ x: x - boxSize, y });
+    }
+  }, []);
 
   return (
     <div
-      className="bg-transparent absolute"
+      className="bg-transparent absolute w-fit"
       style={{ transform: `translateX(${x}px) translateY(${y}px)`, zIndex: zIndex }}
       onMouseDown={(e) => {
         const initX = e.pageX;
@@ -38,7 +37,7 @@ const DragBlock = forwardRef<HTMLDivElement, DragBlockType>(({ children, id, zIn
           });
         };
 
-        const mouseUpHandler = (e: MouseEvent) => {
+        const mouseUpHandler = () => {
           document.removeEventListener("mousemove", mouseMoveHandler);
         };
 
@@ -46,7 +45,7 @@ const DragBlock = forwardRef<HTMLDivElement, DragBlockType>(({ children, id, zIn
         document.addEventListener("mouseup", mouseUpHandler, { once: true });
       }}
     >
-      {children}
+      {React.isValidElement(children) && React.cloneElement(children as ReactElement, { ref: boxRef })}
     </div>
   );
 });
