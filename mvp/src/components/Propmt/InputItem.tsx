@@ -1,42 +1,18 @@
 import { useState } from "react";
-import Title from "./Title";
+
 import {
   IoIosArrowDropdownCircle,
   IoIosArrowDropupCircle,
 } from "react-icons/io";
-import Color from "./Color";
 
 //InputItem.tsx
 type Props = {
-  type: "title" | "color";
+  title: string;
+  component: JSX.Element;
 };
 
-const InputItem = ({ type }: Props) => {
-  const initialState = {
-    title: { inputAry: [""], isCheck: false },
-    color: { color: "" },
-  };
-
-  const title = {
-    title: "카드뉴스 문구",
-    color: "색상 테마 선택",
-  };
-
+const InputItem = ({ title, component }: Props) => {
   const [isDropDown, setIsDropDown] = useState(true);
-  const [itemState, setItemState] = useState<
-    | {
-        inputAry: string[];
-        isCheck: boolean;
-      }
-    | {
-        color: string;
-      }
-  >(initialState[type]);
-
-  const items = {
-    title: <Title {...itemState} setItemState={setItemState} />,
-    color: <Color />,
-  };
 
   const handleDropDownBtn = () => {
     setIsDropDown((prev) => !prev);
@@ -45,7 +21,7 @@ const InputItem = ({ type }: Props) => {
   return (
     <div className="w-full p-4 border-2 rounded-md">
       <div className="flex justify-between">
-        <p className="mb-2">{title[type]}</p>
+        <p className="mb-2">{title}</p>
         {isDropDown ? (
           <IoIosArrowDropdownCircle
             size="20"
@@ -60,7 +36,7 @@ const InputItem = ({ type }: Props) => {
           />
         )}
       </div>
-      {isDropDown ? items[type] : null}
+      {isDropDown ? component : null}
     </div>
   );
 };

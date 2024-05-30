@@ -5,26 +5,22 @@ import { IoCheckbox } from "react-icons/io5";
 //Title.tsx
 
 type Props = {
-  inputAry?: string[];
-  isCheck?: boolean;
+  inputAry: string[];
+  isCheck: boolean;
   setItemState: React.Dispatch<
-    React.SetStateAction<
-      { inputAry: string[]; isCheck: boolean } | { color: string }
-    >
+    React.SetStateAction<{ inputAry: string[]; isCheck: boolean }>
   >;
 };
 
 const Title = ({ inputAry, isCheck, setItemState }: Props) => {
   const handlePlusBtn = () => {
     setItemState((prev) => {
-      if (!("inputAry" in prev)) return { ...prev }; // 타입가드 사용
       return { ...prev, inputAry: [...prev.inputAry, ""] };
     });
   };
 
   const handleDeleteTitle = (idx: number) => {
     setItemState((prev) => {
-      if (!("inputAry" in prev)) return { ...prev };
       if (prev.inputAry.length === 1) return { ...prev };
       return {
         ...prev,
@@ -35,7 +31,6 @@ const Title = ({ inputAry, isCheck, setItemState }: Props) => {
 
   const handleCheckBtn = () => {
     setItemState((prev) => {
-      if (!("isCheck" in prev)) return { ...prev };
       return {
         ...prev,
         isCheck: !prev.isCheck,
@@ -48,7 +43,6 @@ const Title = ({ inputAry, isCheck, setItemState }: Props) => {
     idx: number
   ) => {
     setItemState((prev) => {
-      if (!("inputAry" in prev)) return { ...prev };
       const nxAry = [...prev.inputAry];
       nxAry[idx] = e.target.value;
       return { ...prev, inputAry: nxAry };
