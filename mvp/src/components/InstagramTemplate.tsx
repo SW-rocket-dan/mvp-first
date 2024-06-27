@@ -4,6 +4,7 @@ import { IoPaperPlaneOutline } from "react-icons/io5";
 import { LuHeart } from "react-icons/lu";
 import { RiHeartFill } from "react-icons/ri";
 import { VscBookmark } from "react-icons/vsc";
+import {Link} from "react-router-dom";
 
 type Props = {
   width: number;
@@ -18,6 +19,7 @@ type Props = {
  */
 const InstagramTemplate = ({ width, Content }: Props) => {
   return (
+      <Link to='/cards'>
     <div className={`border-[1px] border-slate-200 py-3`}>
       <header className="flex items-center justify-between py-2">
         <div className="flex items-center px-2">
@@ -28,9 +30,12 @@ const InstagramTemplate = ({ width, Content }: Props) => {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <div className=" flex items-center justify-center p-2 text-[8px] border-2 rounded-lg   border-primary-instabtn text-primary-instabtn">
-            FOLLOW
-          </div>
+          <Link to='/payment'>
+            <button className=" flex items-center justify-center p-2 text-sm border-2 rounded-lg   border-primary-instabtn text-primary-instabtn">
+              이 템플릿 구매하기
+            </button>
+          </Link>
+
           <BsThreeDotsVertical size={width / 20} />
         </div>
       </header>
@@ -58,6 +63,7 @@ const InstagramTemplate = ({ width, Content }: Props) => {
         </div>
       </div>
     </div>
+      </Link>
   );
 };
 
