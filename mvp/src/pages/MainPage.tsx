@@ -38,7 +38,7 @@ const MainPage = () => {
     <div className="flex flex-col w-full h-full gap-4 md:gap-7">
       <div className="flex items-center justify-start gap-2 pt-5 md:px-14 px-7 md:pt-10 md:gap-3 ">
         <LogoSvg className="md:w-10 w-7" />
-        <p className="md:text-xl text-md">로켓단</p>
+        <p className="md:text-xl text-md">Card Capture</p>
         <div className='flex flex-row gap-6 ml-10'>
           <Link to='/info'>서비스 상세설명</Link>
           <Link to='/payment'>결제 플랜</Link>

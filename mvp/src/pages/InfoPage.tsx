@@ -4,13 +4,18 @@ import Footer from "@components/Footer.tsx";
 const InfoPage = () => {
     return(
         <>
+        <div className="flex justify-center border-2 items-center h-[100px] relative w-full" style={{ marginTop: '20px' }}>
+                <a href="/" className="text-center">
+                    <img src="src/assets/logo-cardcapture.png" alt="Logo" width={100} height={50} />
+                </a>
+        </div>
         <div className='flex flex-col p-7 gap-10'>
             <div className='text-xl mb-5 font-bold'>Card Capture 서비스 상세 설명</div>
             <div className='flex flex-col gap-3'>
                 <div className='text-lg font-bold'>팀 소개</div>
-                <div>만들다람쥐"는 과학기술정보통신부가 주최하고 정보통신기획평가원, 한국정보산업연합회가 주관하는 SW Maestro 과정에서 개발된 서비스입니다.
+                <div>"Card Capture"는 과학기술정보통신부가 주최하고 정보통신기획평가원, 한국정보산업연합회가 주관하는 SW Maestro 과정에서 개발된 서비스입니다.
                     <br />
-                    <a className='text-blue-600' href='https://swmaestro.org/sw/main/contents.do?menuNo=200002' >소프트웨어 마에스트로 이동 링크</a>
+                    <a className='text-blue-600' href='https://swmaestro.org/sw/main/contents.do?menuNo=200002' >소프트웨어 마에스트로(SW Maestro) 이동 링크</a>
                 </div>
             </div>
             <div className='flex flex-col gap-3'>
@@ -51,9 +56,12 @@ const InfoPage = () => {
                 </div>
             </div>
             <div className='flex flex-col gap-3'>
-                <div className='text-lg font-bold'>저작권 안내</div>
+                <div className='text-lg font-bold'>저작권 및 AI 생성물 안내</div>
                 <div>
-
+                    - <strong>AI 생성물의 저작권</strong>: 문화체육관광부는 ‘2024 생성형 AI 저작권 가이드라인’에서 AI 생성물은 저작권이 없다고 발표하였습니다. <br />
+                    그럼에도 Card Capture는 AI 생성물에 대해 자체 구현한 내부 시스템을 운영하며 미연에 발생할 수 있는 저작권 침해를 방지하고자 노력합니다.<br />
+                    - <strong>AI 생성물 활용</strong>: AI 생성물은 사용자가 자유롭게 활용할 수 있으며, 상업적 이용도 가능합니다.<br />
+                    더 자세한 방침은 <a href="/terms" className="text-blue-600">이용약관(개인정보 처리방침, 환불 정책, 저작권 처리 방침 포함)</a> 에서 확인하실 수 있습니다<div className=""></div>
                 </div>
             </div>
         </div>

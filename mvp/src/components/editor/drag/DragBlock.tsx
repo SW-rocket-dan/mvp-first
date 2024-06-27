@@ -1,4 +1,4 @@
-import { ReactElement, forwardRef, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { ReactElement, forwardRef, useLayoutEffect, useRef, useState } from "react";
 import React from "react";
 
 type DragBlockType = {
@@ -7,6 +7,7 @@ type DragBlockType = {
   zIndex: number;
 };
 
+// @ts-ignore
 const DragBlock = forwardRef<HTMLDivElement, DragBlockType>(({ children, zIndex }, ref) => {
   // const boundaryRef = ref as React.MutableRefObject<HTMLDivElement>;
   const boxRef = useRef<HTMLTextAreaElement>(null);

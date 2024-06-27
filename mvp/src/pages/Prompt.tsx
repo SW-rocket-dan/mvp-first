@@ -4,6 +4,11 @@ import Footer from "@components/Footer.tsx";
 
 const Prompt = () => {
   return <>
+    <div className="flex justify-center border-2 items-center h-[100px] relative w-full" style={{ marginTop: '20px' }}>
+                <a href="/" className="text-center">
+                    <img src="src/assets/logo-cardcapture.png" alt="Logo" width={100} height={50} />
+                </a>
+    </div>
     <div className='flex flex-col p-7 gap-7 justify-center items-center'>
       <div className='text-xl mb-5 font-bold'>프롬프트 입력하기</div>
       <div className='flex flex-col bg-gray-100 p-10 rounded-md w-[800px] gap-10' >
@@ -18,7 +23,7 @@ const Prompt = () => {
           <input className='p-3 border-2 w-full' type='text' placeholder='예) 커피 자판기 홍보' />
         </div>
         <Link to='/payment'>
-        <button className='p-5 bg-gray-200 font-bold'>
+        <button className='p-5 bg-blue-200 font-bold'>
 
             결제하여 생성하기
 

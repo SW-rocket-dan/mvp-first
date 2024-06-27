@@ -9,6 +9,11 @@ import Footer from "@components/Footer.tsx";
 const CardPage = () => {
     return(
         <>
+        <div className="flex justify-center border-2 items-center h-[100px] relative w-full" style={{ marginTop: '20px' }}>
+                <a href="/" className="text-center">
+                    <img src="src/assets/logo-cardcapture.png" alt="Logo" width={100} height={50} />
+                </a>
+        </div>
             <div className='flex flex-col p-7 gap-10'>
                 <div className='text-xl mb-5 font-bold'>다른 사람이 만든 템플릿</div>
                 <div className='flex flex-row justify-center gap-20 px-10'>

@@ -9,7 +9,7 @@ interface PromptBoxProps {
   purpose: string;
 }
 
-const PromptBox = ({ width, text, purpose }: PromptBoxProps) => {
+const PromptBox = ({ width, text }: PromptBoxProps) => {
   return (
     <div
       className="flex flex-col justify-between p-2 bg-white rounded-md md:rounded-xl md:p-5 text-primary-default"

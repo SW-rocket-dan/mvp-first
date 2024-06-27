@@ -3,25 +3,31 @@ import Footer from "@components/Footer.tsx";
 const PaymentPage = () => {
     return(
         <>
+        <script src="https://cdn.portone.io/v2/browser-sdk.js" />
+        <div className="flex justify-center border-2 items-center h-[100px] relative w-full" style={{ marginTop: '20px' }}>
+                <a href="/" className="text-center">
+                    <img src="src/assets/logo-cardcapture.png" alt="Logo" width={100} height={50} />
+                </a>
+        </div>
         <div className='flex flex-col p-7 '>
             <div className='text-xl mb-5 font-bold'>결제 플랜</div>
             <div className='flex flex-col gap-5' >
                 <div className='text-lg'>이용권 단건 결제</div>
                 <div className='flex flex-row gap-10'>
                     <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
-                        <div>다른 사람이 만든 템플릿 1장 구매하기</div>
-                        <div>₩ 200원 / 1장</div>
+                        <div>다른 사람이 만든 템플릿 10장 구매하기</div>
+                        <div>₩ 2000원 / 10장</div>
                         <div>
-                            - 다른 사람이 만든 포스터 1장을 구매할 수 있는 가격이에요.<br />
+                            - 다른 사람이 만든 포스터 10장을 구매할 수 있는 가격이에요. 포스터는 1장씩 나눠 다운로드 받을 수 있어요.<br />
                             - 유효기간: 구매일로부터 365일
                         </div>
                         <button className='p-3 bg-gray-200'>구매하기</button>
                     </div>
                     <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
-                        <div>AI 포스터 생성 1장 이용권</div>
-                        <div>₩ 600원 / 1장</div>
+                        <div>AI 포스터 생성 10장 이용권</div>
+                        <div>₩ 5000원 / 10장</div>
                         <div>
-                            - AI로 포스터 완성본을 생성할 수 있는 가격이에요.<br />
+                            - AI로 포스터 완성본을 10번 생성할 수 있는 가격이에요. AI 포스터는 1장씩 생성할 수 있어요.<br />
                             - 유효기간: 구매일로부터 365일
                         </div>
                         <button className='p-3 bg-gray-200'>구매하기</button>
@@ -49,11 +55,11 @@ const PaymentPage = () => {
                 <div className='flex flex-row gap-10'>
                     <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
                         <div>Credit 1개월</div>
-                        <div>₩ 7,900원/1개월(Credit 90개)</div>
+                        <div>₩ 7,900원/1개월(Credit 900개)</div>
                         <div>
                             - 다른 사람이 만든 포스터 및 AI 포스터 생성을 자유롭게 Credit으로 이용할 수 있어요.<br />
-                            - 타인의 포스터 구매 = Credit 1<br />
-                            - AI 포스터 생성 = Credit 3<br />
+                            - 타인의 포스터 구매 = Credit 10<br />
+                            - AI 포스터 생성 = Credit 25<br />
                             - 단건 결제 대비 약 56% 할인!<br />
                         </div>
                         <button className='p-3 bg-gray-200'>구매하기</button>

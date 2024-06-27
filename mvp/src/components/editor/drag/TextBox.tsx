@@ -1,5 +1,6 @@
 import React, { useImperativeHandle, useRef, useState } from "react";
 
+// @ts-ignore
 const TextBox = React.forwardRef<HTMLTextAreaElement>((props, ref) => {
   const [text, setText] = useState("");
   const textRef = useRef<HTMLTextAreaElement>(null);

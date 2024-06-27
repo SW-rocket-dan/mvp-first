@@ -6,7 +6,7 @@ const Footer = () => {
             <div className='text-xl font-extrabold'>만들다람쥐</div>
             <div>만들다람쥐, 728-15-02304, 양홍주, 경기도 부천시 원미구 부흥로315번길 37, 2층 2226호(중동, 대명빌딩) 070-8098-3983</div>
             <div className='flex flex-row font-medium'>
-                <Link to='/terms'>이용약관 / 개인정보 처리방침 / 환불 정책</Link>
+                <Link to='/terms'>이용약관(개인정보 처리방침, 환불 정책 포함)</Link>
             </div>
         </div>
     )
