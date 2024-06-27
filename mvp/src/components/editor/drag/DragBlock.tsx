@@ -1,4 +1,4 @@
-import { ReactElement, forwardRef, useEffect, useRef, useState } from "react";
+import { ReactElement, forwardRef, useEffect, useLayoutEffect, useRef, useState } from "react";
 import React from "react";
 
 type DragBlockType = {
@@ -12,10 +12,10 @@ const DragBlock = forwardRef<HTMLDivElement, DragBlockType>(({ children, zIndex 
   const boxRef = useRef<HTMLTextAreaElement>(null);
   const [{ x, y }, setPosition] = useState({ x: 300, y: 0 });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (boxRef.current) {
       const boxSize = Math.floor(boxRef.current.getBoundingClientRect().width / 2);
-      setPosition({ x: x - boxSize, y });
+      setPosition({ x: 300 - boxSize, y });
     }
   }, []);
 

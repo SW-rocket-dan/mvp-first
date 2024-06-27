@@ -12,16 +12,13 @@ import Sample3 from "@assets/sample3.png";
 import Sample4 from "@assets/sample4.png";
 import SlideImg from "@components/SlideImg";
 import { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
+import Footer from "@components/Footer.tsx";
 const MainPage = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [templateSize, setTemplateSize] = useState(window.innerWidth);
   const limitWidth = 786;
 
-  const handleClick = () => {
-    window.open("https://forms.gle/1SZsPLbhtRu9mUDX8");
-  };
-
-  ``;
 
   useEffect(() => {
     setTemplateSize(width > limitWidth ? width / 4 : width * 0.8);
@@ -42,6 +39,10 @@ const MainPage = () => {
       <div className="flex items-center justify-start gap-2 pt-5 md:px-14 px-7 md:pt-10 md:gap-3 ">
         <LogoSvg className="md:w-10 w-7" />
         <p className="md:text-xl text-md">로켓단</p>
+        <div className='flex flex-row gap-6 ml-10'>
+          <Link to='/info'>서비스 상세설명</Link>
+          <Link to='/payment'>결제 플랜</Link>
+        </div>
       </div>
 
       <div className="flex items-center justify-center h-full">
@@ -53,15 +54,17 @@ const MainPage = () => {
             <p className="tracking-tighter md:text-3xl text-md">
               AI와 카드뉴스가 만나 더욱 편리하고 효율적으로
             </p>
-            <button
-              className="flex flex-row items-center gap-2 px-4 py-2 mt-2 bg-black rounded-lg shadow-md md:py-4 md:px-7 md:mt-7"
-              onClick={handleClick}
-            >
-              <StarSvg className="md:w-[25px] w-[18px]" />
-              <span className="text-xs font-medium text-white md:text-lg">
+            <Link to='/prompt'>
+              <button
+                  className="flex flex-row items-center gap-2 px-4 py-2 mt-2 bg-black rounded-lg shadow-md md:py-4 md:px-7 md:mt-7"
+              >
+                <StarSvg className="md:w-[25px] w-[18px]" />
+                <span className="text-xs font-medium text-white md:text-lg">
                 AI로 카드뉴스 만들기
               </span>
-            </button>
+              </button>
+            </Link>
+
             <div className="flex flex-col items-center gap-5 mt-10 md:flex-row md:gap-16">
               <PromptBox
                 width={width <= limitWidth ? 220 : 440}
@@ -77,19 +80,6 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="flex flex-col items-center justify-center gap-5 px-3 mt-16 md:mt-32 md:gap-16">
-        <div className="flex flex-col items-center gap-1 text-xl font-bold md:text-4xl md:gap-2">
-          <p>현재는 베타 테스트로</p>
-          <p>선착순 20명을 한정으로 받고 있어요!</p>
-        </div>
-        <p className="text-sm text-center md:text-2xl">
-          베타테스터 분께는 추후 서비스 오픈 시 {width <= limitWidth && <br />}
-          <span className="font-bold">유료</span> 서비스를{" "}
-          <span className="font-bold text-green-600">무료</span>로 제공해 드릴
-          예정이에요
-        </p>
       </div>
 
       <div className="flex flex-col items-center justify-center gap-5 mt-16 md:mt-40 md:gap-16">
@@ -186,6 +176,7 @@ const MainPage = () => {
           />
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
