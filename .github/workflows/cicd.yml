@@ -58,5 +58,6 @@ jobs:
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > cardcapture.pem
           chmod 400 cardcapture.pem
+          mkdir -p ~/.ssh
           ssh-keyscan ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
           ssh -o StrictHostKeyChecking=no -i cardcapture.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cd /home/ec2-user/mvp && git pull && npm install && npm run build && sudo systemctl restart vite"
