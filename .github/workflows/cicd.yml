@@ -56,6 +56,6 @@ jobs:
           SERVER_USER: ${{ secrets.SERVER_USER }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-          chmod 600 private_key.pem
-          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cd /home/ec2-user/mvp && git pull && npm install && npm run build && sudo systemctl restart vite"
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > cardcapture.pem
+          chmod 600 cardcapture.pem
+          ssh -o StrictHostKeyChecking=no -i cardcapture.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cd /home/ec2-user/mvp && git pull && npm install && npm run build && sudo systemctl restart vite"
