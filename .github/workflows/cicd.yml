@@ -37,6 +37,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Install Git
+        run: sudo apt-get update && sudo apt-get install -y git
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -60,4 +63,4 @@ jobs:
           chmod 400 cardcapture.pem
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
-          ssh -o StrictHostKeyChecking=no -i cardcapture.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cd /home/ec2-user/mvp && git pull && npm install && npm run build && sudo systemctl restart vite"
+          ssh -o StrictHostKeyChecking=no -i cardcapture.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cd /home/${{ secrets.SERVER_USER }}/mvp && git pull && npm install && npm run build && sudo systemctl restart vite"
