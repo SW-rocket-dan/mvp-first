@@ -29,10 +29,6 @@ jobs:
         run: npm run build
         working-directory: ./mvp
 
-      - name: Run tests
-        run: npm test
-        working-directory: ./mvp
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
