@@ -23,11 +23,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./mvp
+        working-directory: ./
 
       - name: Build project
         run: npm run build
-        working-directory: ./mvp
+        working-directory: ./
 
   deploy:
     runs-on: ubuntu-latest
@@ -64,7 +64,7 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
           ssh -o StrictHostKeyChecking=no -i cardcapture.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} <<EOF
-            cd /home/${{ secrets.SERVER_USER }}/mvp-first/mvp
+            cd /home/${{ secrets.SERVER_USER }}/mvp-first/
             git pull
             npm install
             npm run clean
