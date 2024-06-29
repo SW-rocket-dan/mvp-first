@@ -1,13 +1,15 @@
 import PromptImg from '../../public/prompt.png';
+import logoCardcapture from '../../public/logo-cardcapture.png';
 import Footer from "@components/Footer.tsx";
+import {Link} from "react-router-dom";
 
 const InfoPage = () => {
     return(
         <>
         <div className="flex justify-center border-2 items-center h-[100px] relative w-full" style={{ marginTop: '20px' }}>
-                <a href="/" className="text-center">
-                    <img src="src/assets/logo-cardcapture.png" alt="Logo" width={100} height={50} />
-                </a>
+                <Link to="/" className="text-center">
+                <img src={logoCardcapture} alt="Logo" width={100} height={50} />
+                </Link>
         </div>
         <div className='flex flex-col p-7 gap-10'>
             <div className='text-xl mb-5 font-bold'>Card Capture 서비스 상세 설명</div>
