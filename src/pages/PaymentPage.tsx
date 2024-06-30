@@ -20,7 +20,7 @@ const generateUUID = () => {
 };
 
 const PaymentPage = () => {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -41,16 +41,19 @@ const PaymentPage = () => {
 
   const requestPayment = async (data: any) => {
     try {
-      const response = await window.PortOne.requestPayment(data);
+      const response = await window.PortOne.requestPayment({
+        ...data,
+        redirectUrl: 'http://your-redirect-url.com' // 리디렉션 URL 추가
+      });
       console.log(response);
       if (response && response.__portOneErrorType) {
-        setErrorMessage(`Error: ${response.code}`);
+        setMessage(`Error: ${response.code} - ${response.message || 'No additional message'}`);
       } else {
-        setErrorMessage(null);
+        setMessage(`Payment successful!: ${response.message}`);
       }
     } catch (error) {
-      console.error(error);
-      setErrorMessage('Payment request failed');
+      console.error('Payment request failed:', error);
+      setMessage(`Payment request failed: ${error.message || 'Unknown error'}`);
     }
   };
 
@@ -82,7 +85,7 @@ const PaymentPage = () => {
 
   const basePaymentData3 = {
     storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
-    channelKey: 'channel-key-8ca284e5-b192-43d3-9668-2ae24d89f0c5',
+    channelKey: 'channel-key-e93289b1-6d3c-4d19-9a9f-bc358798ebd9',
     orderName: 'Credit 1개월',
     totalAmount: 7900,
     currency: 'CURRENCY_KRW',
@@ -108,7 +111,7 @@ const PaymentPage = () => {
                 - 다른 사람이 만든 포스터 10장을 구매할 수 있는 가격이에요. 포스터는 1장씩 나눠 다운로드 받을 수 있어요.<br />
                 - 유효기간: 구매일로부터 365일
               </div>
-              <button onClick={() => handlePurchase(basePaymentData1)} className='p-3 bg-gray-200'>토스 페이먼츠로 구매하기</button>
+              <button onClick={() => handlePurchase(basePaymentData1)} className='p-3 bg-gray-200'>토스 페이먼츠로 단건 결제하기</button>
             </div>
             <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
               <div>AI 포스터 생성 10장 이용권</div>
@@ -117,7 +120,7 @@ const PaymentPage = () => {
                 - AI로 포스터 완성본을 10번 생성할 수 있는 가격이에요. AI 포스터는 1장씩 생성할 수 있어요.<br />
                 - 유효기간: 구매일로부터 365일
               </div>
-              <button onClick={() => handlePurchase(basePaymentData2)} className='p-3 bg-gray-200'>토스 페이먼츠로 구매하기</button>
+              <button onClick={() => handlePurchase(basePaymentData2)} className='p-3 bg-gray-200'>토스 페이먼츠로 단건 결제하기</button>
             </div>
           </div>
           <div className='flex flex-row gap-10'>
@@ -149,16 +152,16 @@ const PaymentPage = () => {
                 - AI 포스터 생성 = Credit 25<br />
                 - 단건 결제 대비 약 56% 할인!<br />
               </div>
-              <button onClick={() => handlePurchase(basePaymentData3)} className='p-3 bg-gray-200'>토스 페이먼츠로 구매하기</button>
+              <button onClick={() => handlePurchase(basePaymentData3)} className='p-3 bg-gray-200'>토스 페이먼츠로 정기 결제하기</button>
             </div>
           </div>
         </div>
 
       </div>
-      {errorMessage && (
+      {message && (
         <div className='flex flex-col gap-5 mt-10'>
-          <h2 className='text-lg text-red-600'>Error:</h2>
-          <pre className='bg-red-100 p-5 border'>{errorMessage}</pre>
+          <h2 className='text-lg text-red-600'>Notification:</h2>
+          <pre className='bg-red-100 p-5 border'>{message}</pre>
         </div>
       )}
       <Footer />
