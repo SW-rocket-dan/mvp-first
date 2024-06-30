@@ -39,7 +39,23 @@ const PaymentPage = () => {
     };
   }, []);
 
-  const requestPayment = async (data: any) => {
+ const requestPayment = async (data: any) => {
+    try {
+      const response = await window.PortOne.requestPayment(data);
+      console.log(response);
+      if (response && response.__portOneErrorType) {
+        setMessage(`Error: ${response.code}`);
+      } else {
+        setMessage('Payment successful!');
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage('Payment request failed');
+    }
+  };
+
+
+  /*const requestPayment = async (data: any) => {
     try {
       const response = await window.PortOne.requestPayment({
         ...data,
@@ -55,7 +71,7 @@ const PaymentPage = () => {
       console.error('Payment request failed:', error);
       setMessage(`Payment request failed: ${error.message || 'Unknown error'}`);
     }
-  };
+  };*/
 
   const handlePurchase = (basePaymentData: any) => {
     const paymentData = {
