@@ -5,6 +5,7 @@ import Footer from '@components/Footer';
 import logoCardcapture from '../../public/logo-cardcapture.png';
 import kakaopayButton from '../../public/payment_icon_yellow_large.png';
 import tosspaymentButton from '../../public/TossPayments_Logo_Simple_Primary.png';
+import smartroButton from '../../public/smartro_logo.png';
 
 declare global {
   interface Window {
@@ -14,7 +15,7 @@ declare global {
 
 // UUID 생성 함수
 const generateUUID = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+  return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     const r = (Math.random() * 16) | 0;
     const v = c === 'x' ? r : (r & 0x3) | 0x8;
     return v.toString(16);
@@ -115,6 +116,47 @@ const PaymentPage = () => {
   };
 
 
+  const basePaymentOtherSmartroSingle = {
+    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+    channelKey: 'channel-key-ccf029c8-adf4-4021-9c19-064bcbfcea25',
+    pg: 'smartro_v2.t_2302141m',
+    orderName: '다른 사람이 만든 템플릿 10장 구매하기(스마트로 단건 결제)',
+    totalAmount: 2000,
+    currency: 'CURRENCY_KRW',
+    payMethod: 'CARD',
+    customer: {
+      phoneNumber: "010-1234-6789",
+    },
+  };
+
+  const basePaymentAiSmartroSingle = {
+    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+    channelKey: 'channel-key-ccf029c8-adf4-4021-9c19-064bcbfcea25',
+    pg: 'smartro_v2.t_2302141m',
+    orderName: 'AI 포스터 생성 10장 이용권(스마트로 단건 결제)',
+    totalAmount: 5000,
+    currency: 'CURRENCY_KRW',
+    payMethod: 'CARD',
+    customer: {
+      phoneNumber: "010-1234-6789",
+    },
+  };
+
+
+  const basePaymentCreditSmartroSubscribe = {
+    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+    channelKey: 'channel-key-204c6439-68f2-4efc-9618-f2aadb5b3595',
+    pg: 'smartro_v2.t_2302142m',
+    orderName: 'Credit 1개월(스마트로 정기 결제)',
+    totalAmount: 7900,
+    currency: 'CURRENCY_KRW',
+    payMethod: 'CARD',
+    customer: {
+      phoneNumber: "010-1234-6789",
+    },
+  };
+
+
   return (
     <>
       <div className="flex justify-center border-2 items-center h-[100px] relative w-full" style={{ marginTop: '20px' }}>
@@ -138,7 +180,7 @@ const PaymentPage = () => {
               </div>
               <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentOtherTossSingle)} className='cursor-pointer' />
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentOtherKakaopaySingle)} className='cursor-pointer' />
-
+              <img src={smartroButton} width={100} onClick={() => handlePurchase(basePaymentOtherSmartroSingle)} className='cursor-pointer' />
             </div>
             <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
               <div>AI 포스터 생성 10장 이용권</div>
@@ -151,6 +193,7 @@ const PaymentPage = () => {
               </div>
               <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentAiTossSingle)} className='cursor-pointer' />
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentAiKakaopaySingle)} className='cursor-pointer' />
+              <img src={smartroButton} width={100} onClick={() => handlePurchase(basePaymentAiSmartroSingle)} className='cursor-pointer' />
             </div>
           </div>
           <div className='flex flex-row gap-10'>
@@ -186,6 +229,7 @@ const PaymentPage = () => {
               </div>
               <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentCreditTossSubscribe)} className='cursor-pointer' />
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentCreditKakaopaySubscribe)} className='cursor-pointer' />
+              <img src={smartroButton} width={100} onClick={() => handlePurchase(basePaymentCreditSmartroSubscribe)} className='cursor-pointer' />
             </div>
           </div>
         </div>
