@@ -6,6 +6,7 @@ import logoCardcapture from '../../public/logo-cardcapture.png';
 import kakaopayButton from '../../public/payment_icon_yellow_large.png';
 import tosspaymentButton from '../../public/TossPayments_Logo_Simple_Primary.png';
 import smartroButton from '../../public/smartro_logo.png';
+import tosspayButton from '../../public/logo-toss-pay.png';
 
 declare global {
   interface Window {
@@ -57,7 +58,7 @@ const PaymentPage = () => {
     requestPayment(paymentData);
   };
 
-    const basePaymentOtherTossSingle = {
+    const basePaymentOtherTosspaymentsSingle = {
       storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
       channelKey: 'channel-key-8ca284e5-b192-43d3-9668-2ae24d89f0c5',
       orderName: '다른 사람이 만든 템플릿 10장 구매하기(토스페이먼츠 단건 결제)',
@@ -66,7 +67,7 @@ const PaymentPage = () => {
       payMethod: 'CARD',
     };
 
-    const basePaymentAiTossSingle = {
+    const basePaymentAiTosspaymentsSingle = {
       storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
       channelKey: 'channel-key-8ca284e5-b192-43d3-9668-2ae24d89f0c5',
       orderName: 'AI 포스터 생성 10장 이용권(토스페이먼츠 단건 결제)',
@@ -75,7 +76,7 @@ const PaymentPage = () => {
       payMethod: 'CARD',
     };
 
-  const basePaymentCreditTossSubscribe = {
+  const basePaymentCreditTosspaymentsSubscribe = {
     storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
     channelKey: 'channel-key-e93289b1-6d3c-4d19-9a9f-bc358798ebd9',
     orderName: 'Credit 1개월(토스페이먼츠 정기 결제)',
@@ -83,6 +84,37 @@ const PaymentPage = () => {
     currency: 'CURRENCY_KRW',
     payMethod: 'CARD',
   };
+
+
+
+  const basePaymentOtherTossSingle = {
+    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+    channelKey: 'channel-key-ca712034-91bf-498e-b86a-803d02488d6f',
+    pg: 'tosspay_v2.tosstest',
+    orderName: '다른 사람이 만든 템플릿 10장 구매하기(토스페이 단건 결제)',
+    totalAmount: 2000,
+    currency: 'CURRENCY_KRW',
+    payMethod: 'EASY_PAY',
+  };
+
+  const basePaymentAiTossSingle = {
+    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+    channelKey: 'channel-key-ca712034-91bf-498e-b86a-803d02488d6f',
+    orderName: 'AI 포스터 생성 10장 이용권(토스페이 단건 결제)',
+    totalAmount: 5000,
+    currency: 'CURRENCY_KRW',
+    payMethod: 'EASY_PAY',
+
+  };
+
+/*const basePaymentCreditTossSubscribe = {
+  storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+  channelKey: 'channel-key-e93289b1-6d3c-4d19-9a9f-bc358798ebd9',
+  orderName: 'Credit 1개월(토스페이먼츠 정기 결제)',
+  totalAmount: 7900,
+  currency: 'CURRENCY_KRW',
+  payMethod: 'EASY_PAY',
+}; 정기 결제 테스트2₩*/
 
 
   const basePaymentOtherKakaopaySingle = {
@@ -178,7 +210,8 @@ const PaymentPage = () => {
                 <br /><br />
                 결제 수단을 선택해주세요:<br />
               </div>
-              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentOtherTossSingle)} className='cursor-pointer' />
+              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentOtherTosspaymentsSingle)} className='cursor-pointer' />
+              <img src={tosspayButton} width={150} onClick={() => handlePurchase(basePaymentOtherTossSingle)} className='cursor-pointer' />
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentOtherKakaopaySingle)} className='cursor-pointer' />
               <img src={smartroButton} width={100} onClick={() => handlePurchase(basePaymentOtherSmartroSingle)} className='cursor-pointer' />
             </div>
@@ -191,7 +224,8 @@ const PaymentPage = () => {
                 <br /><br />
                 결제 수단을 선택해주세요:<br />
               </div>
-              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentAiTossSingle)} className='cursor-pointer' />
+              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentAiTosspaymentsSingle)} className='cursor-pointer' />
+              <img src={tosspayButton} width={150} onClick={() => handlePurchase(basePaymentAiTossSingle)} className='cursor-pointer' />
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentAiKakaopaySingle)} className='cursor-pointer' />
               <img src={smartroButton} width={100} onClick={() => handlePurchase(basePaymentAiSmartroSingle)} className='cursor-pointer' />
             </div>
@@ -227,7 +261,7 @@ const PaymentPage = () => {
                 <br /><br />
                 결제 수단을 선택해주세요:<br />
               </div>
-              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentCreditTossSubscribe)} className='cursor-pointer' />
+              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentCreditTosspaymentsSubscribe)} className='cursor-pointer' />
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentCreditKakaopaySubscribe)} className='cursor-pointer' />
               <img src={smartroButton} width={100} onClick={() => handlePurchase(basePaymentCreditSmartroSubscribe)} className='cursor-pointer' />
             </div>
