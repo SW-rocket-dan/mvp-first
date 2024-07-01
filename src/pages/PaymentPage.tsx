@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Footer from '@components/Footer';
 import logoCardcapture from '../../public/logo-cardcapture.png';
 import kakaopayButton from '../../public/payment_icon_yellow_large.png';
+import tosspaymentButton from '../../public/TossPayments_Logo_Simple_Primary.png';
 
 declare global {
   interface Window {
@@ -131,9 +132,11 @@ const PaymentPage = () => {
               <div>₩ 2,000원 / 10장</div>
               <div>
                 - 다른 사람이 만든 포스터 10장을 구매할 수 있는 가격이에요. 포스터는 1장씩 나눠 다운로드 받을 수 있어요.<br />
-                - 유효기간: 구매일로부터 365일
+                - 유효기간: 구매일로부터 365일<br />
+                <br /><br />
+                결제 수단을 선택해주세요:<br />
               </div>
-              <button onClick={() => handlePurchase(basePaymentOtherTossSingle)} className='p-3 bg-gray-200'>토스 페이먼츠로 단건 결제하기</button>
+              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentOtherTossSingle)} className='cursor-pointer' />
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentOtherKakaopaySingle)} className='cursor-pointer' />
 
             </div>
@@ -142,9 +145,11 @@ const PaymentPage = () => {
               <div>₩ 5,000원 / 10장</div>
               <div>
                 - AI로 포스터 완성본을 10번 생성할 수 있는 가격이에요. AI 포스터는 1장씩 생성할 수 있어요.<br />
-                - 유효기간: 구매일로부터 365일
+                - 유효기간: 구매일로부터 365일<br />
+                <br /><br />
+                결제 수단을 선택해주세요:<br />
               </div>
-              <button onClick={() => handlePurchase(basePaymentAiTossSingle)} className='p-3 bg-gray-200'>토스 페이먼츠로 단건 결제하기</button>
+              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentAiTossSingle)} className='cursor-pointer' />
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentAiKakaopaySingle)} className='cursor-pointer' />
             </div>
           </div>
@@ -169,15 +174,17 @@ const PaymentPage = () => {
           <div className='text-lg'>정기 구독</div>
           <div className='flex flex-row gap-10'>
             <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
-              <div>디지털 포스터 템플릿 Credit 구독 1개월</div>
-              <div>₩ 7,900원 / 1개월(Credit 900개)</div>
+              <div>다른 사람이 만든 템플릿 + AI 포스터 생성 (Credit 정기 구독)  </div>
+              <div>₩ 7,900원 / 1개월 (Credit 900개)</div>
               <div>
                 - 다른 사람이 만든 포스터 및 AI 포스터 생성을 자유롭게 Credit으로 이용할 수 있어요.<br />
                 - 타인의 포스터 구매 = Credit 10<br />
                 - AI 포스터 생성 = Credit 25<br />
                 - 단건 결제 대비 약 56% 할인!<br />
+                <br /><br />
+                결제 수단을 선택해주세요:<br />
               </div>
-              <button onClick={() => handlePurchase(basePaymentCreditTossSubscribe)} className='p-3 bg-gray-200'>토스 페이먼츠로 정기 결제하기</button>
+              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentCreditTossSubscribe)} className='cursor-pointer' />
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentCreditKakaopaySubscribe)} className='cursor-pointer' />
             </div>
           </div>
