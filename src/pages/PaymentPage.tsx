@@ -1,8 +1,9 @@
 // pages/payment.tsx
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '@components/Footer';
 import logoCardcapture from '../../public/logo-cardcapture.png';
+import kakaopayButton from '../../public/payment_icon_yellow_large.png';
 
 declare global {
   interface Window {
@@ -20,8 +21,6 @@ const generateUUID = () => {
 };
 
 const PaymentPage = () => {
-  const [message, setMessage] = useState<string | null>(null);
-
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://cdn.portone.io/v2/browser-sdk.js';
@@ -43,35 +42,10 @@ const PaymentPage = () => {
     try {
       const response = await window.PortOne.requestPayment(data);
       console.log(response);
-      if (response && response.__portOneErrorType) {
-        setMessage(`Error: ${response.code}`);
-      } else {
-        setMessage('Payment successful!');
-      }
     } catch (error) {
       console.error(error);
-      setMessage('Payment request failed');
     }
   };
-
-
-  /*const requestPayment = async (data: any) => {
-    try {
-      const response = await window.PortOne.requestPayment({
-        ...data,
-        redirectUrl: 'http://your-redirect-url.com' // 리디렉션 URL 추가
-      });
-      console.log(response);
-      if (response && response.__portOneErrorType) {
-        setMessage(`Error: ${response.code} - ${response.message || 'No additional message'}`);
-      } else {
-        setMessage(`Payment successful!: ${response.message}`);
-      }
-    } catch (error) {
-      console.error('Payment request failed:', error);
-      setMessage(`Payment request failed: ${error.message || 'Unknown error'}`);
-    }
-  };*/
 
   const handlePurchase = (basePaymentData: any) => {
     const paymentData = {
@@ -81,32 +55,64 @@ const PaymentPage = () => {
     requestPayment(paymentData);
   };
 
-  const basePaymentData1 = {
-    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
-    channelKey: 'channel-key-8ca284e5-b192-43d3-9668-2ae24d89f0c5',
-    orderName: '다른 사람이 만든 템플릿 10장 구매하기',
-    totalAmount: 2000,
-    currency: 'CURRENCY_KRW',
-    payMethod: 'CARD',
-  };
+    const basePaymentOtherTossSingle = {
+      storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+      channelKey: 'channel-key-8ca284e5-b192-43d3-9668-2ae24d89f0c5',
+      orderName: '다른 사람이 만든 템플릿 10장 구매하기(토스페이먼츠 단건 결제)',
+      totalAmount: 2000,
+      currency: 'CURRENCY_KRW',
+      payMethod: 'CARD',
+    };
 
-  const basePaymentData2 = {
-    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
-    channelKey: 'channel-key-8ca284e5-b192-43d3-9668-2ae24d89f0c5',
-    orderName: 'AI 포스터 생성 10장 이용권',
-    totalAmount: 5000,
-    currency: 'CURRENCY_KRW',
-    payMethod: 'CARD',
-  };
+    const basePaymentAiTossSingle = {
+      storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+      channelKey: 'channel-key-8ca284e5-b192-43d3-9668-2ae24d89f0c5',
+      orderName: 'AI 포스터 생성 10장 이용권(토스페이먼츠 단건 결제)',
+      totalAmount: 5000,
+      currency: 'CURRENCY_KRW',
+      payMethod: 'CARD',
+    };
 
-  const basePaymentData3 = {
+  const basePaymentCreditTossSubscribe = {
     storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
     channelKey: 'channel-key-e93289b1-6d3c-4d19-9a9f-bc358798ebd9',
-    orderName: 'Credit 1개월',
+    orderName: 'Credit 1개월(토스페이먼츠 정기 결제)',
     totalAmount: 7900,
     currency: 'CURRENCY_KRW',
     payMethod: 'CARD',
   };
+
+
+  const basePaymentOtherKakaopaySingle = {
+    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+    channelKey: 'channel-key-69320b20-f653-4f78-a57e-f681c30a7b1f',
+    pg: 'kakaopay.TC0ONETIME',
+    orderName: '다른 사람이 만든 템플릿 10장 구매하기(카카오페이 단건 결제)',
+    totalAmount: 2000,
+    currency: 'CURRENCY_KRW',
+    payMethod: 'EASY_PAY',
+  };
+
+  const basePaymentAiKakaopaySingle = {
+    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+    channelKey: 'channel-key-69320b20-f653-4f78-a57e-f681c30a7b1f',
+    pg: 'kakaopay.TC0ONETIME',
+    orderName: 'AI 포스터 생성 10장 이용권(카카오페이 단건 결제)',
+    totalAmount: 5000,
+    currency: 'CURRENCY_KRW',
+    payMethod: 'EASY_PAY',
+  };
+
+  const basePaymentCreditKakaopaySubscribe = {
+    storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+    channelKey: 'channel-key-ee5b1404-3c48-4e78-b9fc-301f9be22b5f',
+    pg: 'kakaopay.TCSUBSCRIP',
+    orderName: 'Credit 1개월(카카오페이 정기 결제)',
+    totalAmount: 7900,
+    currency: 'CURRENCY_KRW',
+    payMethod: 'EASY_PAY',
+  };
+
 
   return (
     <>
@@ -122,21 +128,24 @@ const PaymentPage = () => {
           <div className='flex flex-row gap-10'>
             <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
               <div>다른 사람이 만든 템플릿 10장 구매하기</div>
-              <div>₩ 2000원 / 10장</div>
+              <div>₩ 2,000원 / 10장</div>
               <div>
                 - 다른 사람이 만든 포스터 10장을 구매할 수 있는 가격이에요. 포스터는 1장씩 나눠 다운로드 받을 수 있어요.<br />
                 - 유효기간: 구매일로부터 365일
               </div>
-              <button onClick={() => handlePurchase(basePaymentData1)} className='p-3 bg-gray-200'>토스 페이먼츠로 단건 결제하기</button>
+              <button onClick={() => handlePurchase(basePaymentOtherTossSingle)} className='p-3 bg-gray-200'>토스 페이먼츠로 단건 결제하기</button>
+              <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentOtherKakaopaySingle)} className='cursor-pointer' />
+
             </div>
             <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
               <div>AI 포스터 생성 10장 이용권</div>
-              <div>₩ 5000원 / 10장</div>
+              <div>₩ 5,000원 / 10장</div>
               <div>
                 - AI로 포스터 완성본을 10번 생성할 수 있는 가격이에요. AI 포스터는 1장씩 생성할 수 있어요.<br />
                 - 유효기간: 구매일로부터 365일
               </div>
-              <button onClick={() => handlePurchase(basePaymentData2)} className='p-3 bg-gray-200'>토스 페이먼츠로 단건 결제하기</button>
+              <button onClick={() => handlePurchase(basePaymentAiTossSingle)} className='p-3 bg-gray-200'>토스 페이먼츠로 단건 결제하기</button>
+              <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentAiKakaopaySingle)} className='cursor-pointer' />
             </div>
           </div>
           <div className='flex flex-row gap-10'>
@@ -160,26 +169,21 @@ const PaymentPage = () => {
           <div className='text-lg'>정기 구독</div>
           <div className='flex flex-row gap-10'>
             <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
-              <div>Credit 1개월</div>
-              <div>₩ 7,900원/1개월(Credit 900개)</div>
+              <div>디지털 포스터 템플릿 Credit 구독 1개월</div>
+              <div>₩ 7,900원 / 1개월(Credit 900개)</div>
               <div>
                 - 다른 사람이 만든 포스터 및 AI 포스터 생성을 자유롭게 Credit으로 이용할 수 있어요.<br />
                 - 타인의 포스터 구매 = Credit 10<br />
                 - AI 포스터 생성 = Credit 25<br />
                 - 단건 결제 대비 약 56% 할인!<br />
               </div>
-              <button onClick={() => handlePurchase(basePaymentData3)} className='p-3 bg-gray-200'>토스 페이먼츠로 정기 결제하기</button>
+              <button onClick={() => handlePurchase(basePaymentCreditTossSubscribe)} className='p-3 bg-gray-200'>토스 페이먼츠로 정기 결제하기</button>
+              <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentCreditKakaopaySubscribe)} className='cursor-pointer' />
             </div>
           </div>
         </div>
 
       </div>
-      {message && (
-        <div className='flex flex-col gap-5 mt-10'>
-          <h2 className='text-lg text-red-600'>Notification:</h2>
-          <pre className='bg-red-100 p-5 border'>{message}</pre>
-        </div>
-      )}
       <Footer />
     </>
   );
