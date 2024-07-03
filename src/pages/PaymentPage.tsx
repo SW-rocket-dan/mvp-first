@@ -252,12 +252,14 @@ const PaymentPage = () => {
           <div className='flex flex-row gap-10'>
             <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
               <div>다른 사람이 만든 템플릿 + AI 포스터 생성 (Credit 정기 구독)  </div>
-              <div>₩ 7,900원 / 1개월 (Credit 900개)</div>
+              <div>₩ 7,900원 / 30일 (Credit 900개)</div>
               <div>
                 - 다른 사람이 만든 포스터 및 AI 포스터 생성을 자유롭게 Credit으로 이용할 수 있어요.<br />
                 - 타인의 포스터 구매 = Credit 10<br />
                 - AI 포스터 생성 = Credit 25<br />
                 - 단건 결제 대비 약 56% 할인!<br />
+                - Credit은 구매일로부터 30일간 유효해요.<br />
+                - 만료일 2주, 1일 전 메일로 알림을 보내드려요.<br />
                 <br /><br />
                 결제 수단을 선택해주세요:<br />
               </div>
