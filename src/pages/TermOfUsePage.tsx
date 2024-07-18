@@ -295,7 +295,6 @@ const TermOfUsePage = () => {
   - 이메일: wilyouspeedup@naver.com<br />   
                 </div>
             </div>
-            <Footer />
 <br />
 부 칙<br />
 <br />
@@ -447,5 +446,6 @@ const TermOfUsePage = () => {
   가. 중앙행정심판위원회 : (국번없이) 110 (www.simpan.go.kr)<br />
 <br />
 부칙<br />
-    </div>  </> )}
+    </div>
+    <Footer />  </> )}
 export default TermOfUsePage; 
