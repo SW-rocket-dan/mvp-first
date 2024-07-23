@@ -54,6 +54,7 @@ const PaymentPage = () => {
     const paymentData = {
       ...basePaymentData,
       paymentId: generateUUID(), // 고유한 paymentId 생성
+      redirectUrl: 'https://cardcapture.app/payment'
     };
     requestPayment(paymentData);
   };
