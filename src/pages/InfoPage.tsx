@@ -63,7 +63,7 @@ const InfoPage = () => {
                     - <strong>AI 생성물의 저작권</strong>: 문화체육관광부는 ‘2024 생성형 AI 저작권 가이드라인’에서 AI 생성물은 저작권이 없다고 발표하였습니다. <br />
                     그럼에도 Card Capture는 AI 생성물에 대해 자체 구현한 내부 시스템을 운영하며 미연에 발생할 수 있는 저작권 침해를 방지하고자 노력합니다.<br />
                     - <strong>AI 생성물 활용</strong>: AI 생성물은 사용자가 자유롭게 활용할 수 있으며, 상업적 이용도 가능합니다.<br />
-                    더 자세한 방침은 <a href="/terms" className="text-blue-600">이용약관(개인정보 처리방침, 환불 정책 포함)</a> 에서 확인하실 수 있습니다<div className=""></div>
+                    더 자세한 방침은 <a href="/terms" className="text-blue-600">이용약관(개인정보 처리방침, 환불 정책, 저작권 처리 방침 포함)</a> 에서 확인하실 수 있습니다<div className=""></div>
                 </div>
             </div>
         </div>

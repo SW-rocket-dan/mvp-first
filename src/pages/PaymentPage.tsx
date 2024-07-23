@@ -9,7 +9,7 @@ import smartroButton from '../../public/smartro_logo.png';
 import tosspayButton from '../../public/logo-toss-pay.png';
 
 declare global {
-  interface Window {
+  interface Window {  
     PortOne: any;
   }
 }
@@ -64,7 +64,7 @@ const PaymentPage = () => {
       orderName: '다른 사람이 만든 템플릿 10장 구매하기(토스페이먼츠 단건 결제)',
       totalAmount: 2000,
       currency: 'CURRENCY_KRW',
-      payMethod: 'CARD',
+      payMethod: 'CARD'
     };
 
     const basePaymentAiTosspaymentsSingle = {
@@ -74,6 +74,23 @@ const PaymentPage = () => {
       totalAmount: 5000,
       currency: 'CURRENCY_KRW',
       payMethod: 'CARD',
+    };
+
+    const basePaymentAiTosspaymentsSingleOne = {
+      storeId: 'store-5782c1b2-9e1e-4016-a185-f9b19987ede0',
+      channelKey: import.meta.env.VITE_CHANNEL_KEY,
+      orderName: 'AI 포스터 생성 1장 이용권(토스페이먼츠 단건 결제) (실결제)',
+      totalAmount: 500,
+      currency: 'CURRENCY_KRW',
+      payMethod: 'CARD'
+      /*payMethod: 'GIFT_CERTIFICATE',
+      giftCertificate: {
+        giftCertificateType: 'CULTURELAND',
+      }*/
+      /*payMethod: 'EASY_PAY',
+      easyPay: {
+        easyPayProvider: 'KAKAOPAY'
+      }*/
     };
 
   const basePaymentCreditTosspaymentsSubscribe = {
@@ -229,6 +246,17 @@ const PaymentPage = () => {
               <img src={kakaopayButton} width={100} onClick={() => handlePurchase(basePaymentAiKakaopaySingle)} className='cursor-pointer' />
               <img src={smartroButton} width={100} onClick={() => handlePurchase(basePaymentAiSmartroSingle)} className='cursor-pointer' />
             </div>
+            <div className='flex flex-col gap-5 w-[500px] p-7 border-md bg-gray-50 border-2'>
+              <div>AI 포스터 생성 1장 이용권</div>
+              <div>₩ 500원 / 1장</div>
+              <div>
+                - AI로 포스터 완성본을 1번 생성할 수 있는 가격이에요.<br />
+                - 유효기간: 구매일로부터 365일<br />
+                <br /><br />
+                결제 수단을 선택해주세요:<br />
+              </div>
+              <img src={tosspaymentButton} width={150} onClick={() => handlePurchase(basePaymentAiTosspaymentsSingleOne)} className='cursor-pointer' />
+           </div>
           </div>
           <div className='flex flex-row gap-10'>
             <div className='flex flex-col gap-5 w-[500px] p-7 border-md'>
