@@ -63,6 +63,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i cardcapture.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} <<EOF
             cd /home/${{ secrets.SERVER_USER }}/mvp-first/
             git pull
+            echo "VITE_CHANNEL_KEY=${{ secrets.VITE_CHANNEL_KEY }}" > .env
             npm install
             npm run clean
             npm run build
