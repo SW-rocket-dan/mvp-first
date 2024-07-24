@@ -54,6 +54,7 @@ const PaymentPage = () => {
     const paymentData = {
       ...basePaymentData,
       paymentId: generateUUID(), // 고유한 paymentId 생성
+      confirmUrl: 'https://api.cardcapture.app/api/v1/ai/bgcolor/webhook',
       redirectUrl: 'https://cardcapture.app/payment'
     };
     requestPayment(paymentData);
